@@ -1,38 +1,52 @@
-import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
-import { Context } from "../context";
+import { AppBar, Avatar, Button, Toolbar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./styles.css";
 
 const Header = () => {
-  const globalContext = React.useContext(Context);
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "transparent", boxShadow: "none" }}
+    >
       <Toolbar className="header">
-        <div
-          className="header-left"
-          onClick={() => globalContext.setLandingPage("home")}
-        >
-          <Avatar></Avatar>
-          <Typography variant="h3">ArtForCharity</Typography>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/" className="header-left">
+            <Avatar></Avatar>
+            <Typography
+              variant="h4"
+              sx={{
+                paddingLeft: (theme) => theme.spacing(2),
+                paddingRight: (theme) => theme.spacing(6),
+              }}
+            >
+              Art for Charity
+            </Typography>
+          </Link>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            {["Demos", "Pages", "Components", "Support"].map((nav, ndx) => {
+              return (
+                <Button
+                  key={ndx}
+                  sx={{ paddingRight: (theme) => theme.spacing(4) }}
+                  endIcon={<KeyboardArrowDownIcon />}
+                  color="secondary"
+                >
+                  {nav}
+                </Button>
+              );
+            })}
+          </div>
         </div>
         <div className="header-nav">
-          <Button
-            variant="contained"
-            onClick={() => globalContext.setLandingPage("gallery")}
-          >
-            Art Gallery
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => globalContext.setLandingPage("events")}
-          >
-            Events
-          </Button>
-          <Button
-            variant="contained"
-            onClick={() => globalContext.setLandingPage("about")}
-          >
-            About Us
+          <Button variant="contained" color="primary">
+            Get Started
           </Button>
         </div>
       </Toolbar>

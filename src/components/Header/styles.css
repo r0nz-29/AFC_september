@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding-top: 2vh;
+  padding-top: 0.5vh;
   padding-bottom: 2vh;
 }
 
@@ -14,5 +14,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 20vw;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

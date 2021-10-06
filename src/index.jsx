@@ -1,12 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {Provider} from './components/context';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { theme } from "./theme";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { Provider } from "./components/context";
 
 ReactDOM.render(
-  <Provider>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+  <BrowserRouter>
+    <Provider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
-
